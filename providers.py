@@ -19,9 +19,9 @@ def get_scorechain(address):
     url = "https://www.scorechain.com/api_beta/address/%s?token=%s" %(address, SCORECHAIN_TOKEN)
     try:
         score_result = requests.get(url=url)
-        ret_json = json.loads(score_result.content)
+        ret_json = json.loads(score_result.json())
         return ret_json
 
-    except Exception, E:
-        print ("Scorechain failed for %s : %s" %(address, E))
+    except Exception:
+        print ("Scorechain failed for %s" %(address))
         return None

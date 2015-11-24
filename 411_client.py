@@ -41,7 +41,7 @@ def cmd_info():
     sel_url = server_url
     answer = requests.get(url=sel_url.format())
     print (answer.json().get("ascii"))
-    print (json.dumps(answer.json().get("data", None), indent=4, sort_keys=True))
+    print (json.dumps(json.loads(answer.text).get("data", None), indent=4, sort_keys=True))
 
 
 if __name__ == '__main__':
