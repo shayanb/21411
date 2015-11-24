@@ -19,24 +19,24 @@ payment = Payment(app, wallet)
 
 @payment.required(100)
 def lookup():
-    if request.method == "POST":
-        price_paid = json.loads(request.headers.get("Bitcoin-Transfer"))['amount']
-        print ("Paid: %s" %price_paid)
-        if request.json and "address" in request.json:
-            ret_json = {
-                "address": request.json["address"],
-                "price": price_paid,
-                "time": time.time()
-            }
-            address = request.json["address"]
+    price_paid = json.loads(request.headers.get("Bitcoin-Transfer"))['amount']
+    print ("Paid: %s" %price_paid)
+    address = str(request.args.get('address'))
+    if address:
+        ret_json = {
+            "address": request.json["address"],
+            "price": price_paid,
+            "time": time.time()
+        }
+        address = request.json["address"]
 
-            ret_json['data'] = get_scorechain(address)
+        ret_json['data'] = get_scorechain(address)
 
-            print (json.dumps(ret_json))
-            return json.dumps(ret_json), 201
-        else:
-            print ("Invalid request")
-            return "Invalid request", 400
+        print (json.dumps(ret_json))
+        return json.dumps(ret_json), 201
+    else:
+        print ("Invalid request")
+        return "Invalid request", 400
 
 
 
