@@ -54,7 +54,7 @@ def look_it_up(address = None):
 def cmd_info():
     sel_url = server_url
     answer = requests.get(url=sel_url.format())
-    print (json.dumps(answer.json().get("data", None), indent=4, sort_keys=True))
+    #print (json.dumps(answer.json().get("data", None), indent=4, sort_keys=True))
     return answer.json().get("data", None)
 
 
@@ -68,13 +68,15 @@ if __name__ == '__main__':
         look_it_up(address)
     else:
         info = json.loads(cmd_info())
-        print ("Name: %s \t Version: %s \nDescription: %s \n Endpoint: /lookup?address=[address] \t Minimum Price: %s \n"
+        print ("Name: %s \t Version: %s \nDescription: %s \nEndpoint: /lookup?address=[address] \t Minimum Price: %s \n"
                % (info['name'],info['version'],info['description'],info['pricing']["/lookup"]["minimum"]))
 
         cont = input("Do you want to lookup a Bitcoin address? (Y/n) ")
         cont = cont or "y"
         if cont in ["y", "Y"]:
             look_it_up()
+        else:
+            print "Thank you, come again"
 
 
 
