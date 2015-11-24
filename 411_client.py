@@ -26,6 +26,32 @@ requests = BitTransferRequests(wallet, username)
 server_url = 'http://localhost:21411/'
 
 
+def draw_me():
+
+
+#     four11 = "____________/\\\_________/\\\______/\\\_         \n"\
+# " __________/\\\\\_____/\\\\\\\__/\\\\\\\_        \n"\
+# "  ________/\\\/\\\____\/////\\\_\/////\\\_       \n"\
+# "   ______/\\\/\/\\\________\/\\\_____\/\\\_      \n"\
+# "    ____/\\\/__\/\\\________\/\\\_____\/\\\_     \n"\
+# "     __/\\\\\\\\\\\\\\\\_____\/\\\_____\/\\\_    \n"\
+# "      _\///////////\\\//______\/\\\_____\/\\\_   \n"\
+# "       ___________\/\\\________\/\\\_____\/\\\_  \n"\
+# "        ___________\///_________\///______\///_ \n"
+
+    four11 =    "$$\   $$\         $$\           $$\    \n"\
+                "$$ |  $$ |      $$$$ |        $$$$ |   \n"\
+                "$$ |  $$ |      \_$$ |        \_$$ |   \n"\
+                "$$$$$$$$ |        $$ |          $$ |   \n"\
+                "\_____$$ |        $$ |          $$ |   \n"\
+                "      $$ |        $$ |          $$ |   \n"\
+                "      $$ |      $$$$$$\       $$$$$$\  \n"\
+                "      \__|      \______|      \______| \n"\
+                "                                       \n"
+    return four11
+
+
+
 def look_it_up(address = None):
     if address is None:
         address = input("Please enter the Bitcoin address: ")
@@ -40,11 +66,12 @@ def look_it_up(address = None):
 def cmd_info():
     sel_url = server_url
     answer = requests.get(url=sel_url.format())
-    print (answer.json().get("ascii"))
     print (json.dumps(answer.json().get("data", None), indent=4, sort_keys=True))
+    return answer.json().get("data, None")
 
 
 if __name__ == '__main__':
+    print (draw_me())
     if len(sys.argv) >= 2 and sys.argv[1] == "lookup":
         if sys.argv[2]:
             address = sys.argv[2]
@@ -52,5 +79,14 @@ if __name__ == '__main__':
             address = None
         look_it_up(address)
     else:
-        cmd_info()
+        info = cmd_info()
+        print ("Name: %s \t Version: %s \n Description: %s \n\n Endpoint: /lookup?address=[address] \t Minimum Price: %s "
+               % (info['name'],info['version'],info['description'],info['pricing']["/lookup"]["minimum"]))
+
+        cont = input("Do you want to lookup a Bitcoin address? (Y/n) ")
+        cont = cont or "y"
+        if cont in ["y", "Y"]:
+            look_it_up()
+
+
 
