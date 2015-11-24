@@ -26,8 +26,9 @@ requests = BitTransferRequests(wallet, username)
 server_url = 'http://localhost:21411/'
 
 
-def look_it_up():
-    address = input("Please enter the Bitcoin address: ")
+def look_it_up(address = None):
+    if address is None:
+        address = input("Please enter the Bitcoin address: ")
     params = {'address':address}
     sel_url = server_url + 'lookup'
     answer = requests.post(url=sel_url.format(), json=params)
@@ -45,8 +46,12 @@ def cmd_info():
 
 
 if __name__ == '__main__':
-    if len(sys.argv) == 2 and sys.argv[1] == "lookup":
-        look_it_up()
+    if len(sys.argv) >= 2 and sys.argv[1] == "lookup":
+        if sys.argv[2]:
+            address = sys.argv[2]
+        else:
+            address = None
+        look_it_up(address)
     else:
         cmd_info()
 
