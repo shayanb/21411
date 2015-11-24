@@ -31,6 +31,8 @@ def look_it_up(address = None):
         address = input("Please enter the Bitcoin address: ")
     sel_url = server_url + 'lookup?address=' + address
     answer = requests.get(url=sel_url.format())
+    print (answer.json().get("ascii"))
+    print ("=" * 30)
     print (json.dumps(answer.json().get("data", None), indent=4, sort_keys=True))
 
 
