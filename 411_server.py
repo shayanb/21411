@@ -20,7 +20,6 @@ payment = Payment(app, wallet)
 def lookup():
     price_paid = json.loads(request.headers.get("Bitcoin-Transfer"))['amount']
     print ("Paid: %s" %price_paid)
-    print (request.__dict__)
     address = str(request.args.get('address'))
     if address:
         ret_json = {
@@ -78,7 +77,7 @@ def get_info():
     }
     ret_json = {"data":json.dumps(info_obj)}
 
-    return ret_json
+    return json.dumps(ret_json), 200
 
 
 if __name__ == '__main__':
