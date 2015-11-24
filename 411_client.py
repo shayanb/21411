@@ -29,12 +29,8 @@ server_url = 'http://localhost:21411/'
 def look_it_up(address = None):
     if address is None:
         address = input("Please enter the Bitcoin address: ")
-    #params = {'address':address}
-    sel_url = server_url + 'lookup/?address=' + address
+    sel_url = server_url + 'lookup?address=' + address
     answer = requests.get(url=sel_url.format())
-    #print (answer.json().get("ascii"))
-    #print ("Bang")
-    print (answer)
     print (json.dumps(answer.json().get("data", None), indent=4, sort_keys=True))
 
 
@@ -43,7 +39,7 @@ def cmd_info():
     sel_url = server_url
     answer = requests.get(url=sel_url.format())
     print (answer.json().get("ascii"))
-    print (json.dumps(json.loads(answer.text).get("data", None), indent=4, sort_keys=True))
+    print (json.dumps(answer.json().get("data", None), indent=4, sort_keys=True))
 
 
 if __name__ == '__main__':
