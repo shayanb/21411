@@ -13,7 +13,7 @@ import sys
 # import from the 21 Developer Library
 from two1.commands.config import Config
 from two1.lib.wallet import Wallet
-from two1.lib.bitrequests import BitTransferRequests, BitRequests
+from two1.lib.bitrequests import BitTransferRequests
 import datetime
 import tabulate
 
@@ -31,9 +31,10 @@ def look_it_up(address = None):
         address = input("Please enter the Bitcoin address: ")
     #params = {'address':address}
     sel_url = server_url + 'lookup/?address=' + address
-    answer = BitRequests.get(url=sel_url.format())
+    answer = requests.get(url=sel_url.format())
     #print (answer.json().get("ascii"))
     #print ("Bang")
+    print (answer)
     print (json.dumps(answer.json().get("data", None), indent=4, sort_keys=True))
 
 
