@@ -76,7 +76,7 @@ if __name__ == '__main__':
         if cont in ["y", "Y"]:
             look_it_up()
         else:
-            print "Thank you, come again"
+            print ("Thank you, come again")
 
 
 
