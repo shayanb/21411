@@ -2,19 +2,9 @@
 Blockchain 411
 ============================
 
-$$\   $$\         $$\           $$\
-$$ |  $$ |      $$$$ |        $$$$ |
-$$ |  $$ |      \_$$ |        \_$$ |
-$$$$$$$$ |        $$ |          $$ |
-\_____$$ |        $$ |          $$ |
-      $$ |        $$ |          $$ |
-      $$ |      $$$$$$\       $$$$$$\
-      \__|      \______|      \______|
 
-
-
-Blockchain Analytics
-Lookup Bitcoin addresses based on their cluster and the clusters they've had transactions with
+####Blockchain Analytics
+Lookup Bitcoin addresses based on their cluster and the clusters they've had transactions with, and some other basic information
 
 Running the server
 ------------------
