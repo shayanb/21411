@@ -29,7 +29,8 @@ def draw_me():
 # "       ___________\/\\\________\/\\\_____\/\\\_  \n"\
 # "        ___________\///_________\///______\///_ \n"
 
-    four11 =    "$$\   $$\         $$\           $$\    \n"\
+    four11 =    "\n"\
+                "$$\   $$\         $$\           $$\    \n"\
                 "$$ |  $$ |      $$$$ |        $$$$ |   \n"\
                 "$$ |  $$ |      \_$$ |        \_$$ |   \n"\
                 "$$$$$$$$ |        $$ |          $$ |   \n"\
@@ -70,7 +71,7 @@ if __name__ == '__main__':
         info = json.loads(cmd_info())
         print ("Name: %s \t Version: %s \nDescription: %s \nEndpoint: /lookup?address=[address] \t Minimum Price: %s \n"
                % (info['name'],info['version'],info['description'],info['pricing']["/lookup"]["minimum"]))
-
+        print ("Commandline usage: python3 ./411_client.py lookup [BITCOIN_ADDRESS]\n")
         cont = input("Do you want to lookup a Bitcoin address? (Y/n) ")
         cont = cont or "y"
         if cont in ["y", "Y"]:

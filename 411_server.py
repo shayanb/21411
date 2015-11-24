@@ -67,7 +67,7 @@ def get_info():
     info_obj = {
 	"name": "Blockchain 411",
     "description":"If I know, I would tell on you...",
-	"version": 101,
+	"version": 104,
         "pricing": {
             "/lookup" : {
                 "minimum" : 100
