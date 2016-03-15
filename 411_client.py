@@ -13,7 +13,7 @@ username = Config().username
 requests = BitTransferRequests(wallet, username)
 
 # server address
-server_url = 'http://10.151.47.208:21411/'
+server_url = 'http://10.244.223.220:21411/'
 
 
 def draw_me():

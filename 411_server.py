@@ -35,7 +35,24 @@ def lookup():
         print ("Invalid request")
         return "Invalid request", 400
 
+@app.route('/manifest')
+def docs():
+    '''
+    Serves the app manifest to the 21 crawler.
+    '''
+    with open('manifest.yaml', 'r') as f:
+        manifest_yaml = yaml.load(f)
+    return json.dumps(manifest_yaml)
 
+
+@app.route('/client')
+def client():
+    '''
+    Provides an example client script.
+    '''
+    return send_from_directory('static', 'client.py')
+
+    
 
 def draw_me():
 
